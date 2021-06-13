@@ -4,3 +4,10 @@ endpoints:
 
 FE pull request with products endpoints integrated
 https://github.com/rolling-scopes-school/nodejs-aws-fe/pull/288
+
+Products schema
+  count         | number |  number or ordered products
+  description   | string |  product description
+  id            | uid    |  id of product
+  price         | number |  price of product
+  title         | string |  title/name of product
