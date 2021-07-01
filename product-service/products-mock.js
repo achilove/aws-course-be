@@ -17,18 +17,21 @@ module.exports = [{
   description: 'Short Product Description2',
   id: '7567ec4b-b10c-48c5-9345-fc73c48a80a2',
   title: 'ProductTop',
+  price: 22,
 },
 {
   count: 7,
   description: 'Short Product Description7',
   id: '7567ec4b-b10c-48c5-9345-fc73c48a80a1',
   title: 'ProductTitle',
+  price: 13,
 },
 {
   count: 7,
   description: 'Short Product Description2',
   id: '7567ec4b-b10c-48c5-9345-fc73c48a80a3',
   title: 'Product',
+  price: 12,
 },
 {
   count: 12,
