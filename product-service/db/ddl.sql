@@ -10,6 +10,6 @@ CREATE TABLE IF NOT EXISTS products (
 
 CREATE TABLE IF NOT EXISTS stocks (
 	product_id UUID,
-	COUNT INTEGER,
+	count INTEGER,
 	FOREIGN KEY ("product_id") REFERENCES "products" ("id")
 );
