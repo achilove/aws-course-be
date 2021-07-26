@@ -29,3 +29,10 @@ module.exports.unexpectedErrorResponse = () => {
         message
     }, 500);
 }
+
+module.exports.validationErrorResponse = (paramName) => {
+    const message = `${paramName} is not valid`;
+    return response({
+        message
+    }, 420);
+}
