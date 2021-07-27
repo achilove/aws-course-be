@@ -30,8 +30,14 @@ module.exports.unexpectedErrorResponse = () => {
     }, 500);
 }
 
-module.exports.validationErrorResponse = (paramName) => {
+module.exports.validationErrorResponse = (message) => {
     return response({
         message
     }, 420);
+}
+
+module.exports.ProductExistsErrorResponse = (message) => {
+    return response({
+        message
+    }, 422);
 }

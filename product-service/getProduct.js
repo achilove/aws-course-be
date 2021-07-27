@@ -16,7 +16,9 @@ module.exports = async ( event ) => {
         }
         return successResponse(products[0]);
     }catch(e){
-        console.error('DB error: ', e)
-        return unexpectedErrorResponse('product');
+        console.log('DB error: ', e)
+        return unexpectedErrorResponse();
+    }finally {
+        client.end();
     }
 };

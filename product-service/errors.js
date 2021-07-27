@@ -5,4 +5,12 @@ class ValidationError extends Error {
     }
 }
 
+class ValidationNotPresentError extends ValidationError {
+    constructor(param){
+        super();
+        this.message = param + " paramter is not present" ;
+    }
+}
+
 module.exports.ValidationError = ValidationError;
+module.exports.ValidationNotPresentError = ValidationNotPresentError;
