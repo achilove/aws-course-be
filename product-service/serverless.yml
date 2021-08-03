@@ -1,0 +1,25 @@
+service: product-service
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-west-1
+
+functions:
+  getProducts:
+    handler: handler.getProducts
+    events:
+      - http:
+         path: /products
+         method: get
+         cors: true 
+  getProduct:
+    handler: handler.getProduct
+    events:
+      - http:
+         path: /products/{id}
+         method: get
+         cors: true
