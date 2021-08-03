@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 
-const { successResponse, notFoundResponse, unexpectedErrorResponse } = require('helper');
+const { successResponse, notFoundResponse, unexpectedErrorResponse, validationErrorResponse } = require('helper');
 const { dbOptions } = require('./db/config');
 
 module.exports = async ( event ) => {
@@ -17,6 +17,11 @@ module.exports = async ( event ) => {
         return successResponse(products[0]);
     }catch(e){
         console.log('DB error: ', e)
+
+        if((e.code && e.code === '22P02') ){
+            return validationErrorResponse('id should be uuid format');
+        }
+
         return unexpectedErrorResponse();
     }finally {
         client.end();
