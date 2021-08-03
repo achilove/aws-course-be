@@ -4,7 +4,7 @@ endpoints:
   POST - https://33j0f1vd50.execute-api.eu-west-1.amazonaws.com/dev/products
 
 FE pull request with products endpoints integrated
-https://github.com/rolling-scopes-school/nodejs-aws-fe/pull/288
+https://github.com/achilove/nodejs-aws-fe/pull/2
 
 Products schema
   count         | number |  number or ordered products
