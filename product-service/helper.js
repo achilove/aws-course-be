@@ -20,7 +20,7 @@ module.exports.notFoundResponse = item => {
     const message = item + ' not found';
     return response({
         message
-    }, 400);
+    }, 404);
 }
 
 module.exports.unexpectedErrorResponse = () => {
@@ -33,7 +33,7 @@ module.exports.unexpectedErrorResponse = () => {
 module.exports.validationErrorResponse = (message) => {
     return response({
         message
-    }, 420);
+    }, 400);
 }
 
 module.exports.ProductExistsErrorResponse = (message) => {
