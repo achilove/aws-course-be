@@ -1,14 +1,14 @@
 class ValidationError extends Error {
     constructor(param){
         super();
-        this.message = param + " paramter value is invalid" ;
+        this.message = param + " parameter value is invalid" ;
     }
 }
 
 class ValidationNotPresentError extends ValidationError {
     constructor(param){
         super();
-        this.message = param + " paramter is not present" ;
+        this.message = param + " parameter is not present" ;
     }
 }
 
