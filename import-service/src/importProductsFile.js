@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 const { successResponse, errorResponse } = require('./helper');
-const { BUCKET, FOLDER_UPLOAD, FOLDER_PARSED } = require('./configs');
+const { BUCKET, FOLDER_UPLOAD } = require('./configs');
 
 
 module.exports = async ( event ) => {
