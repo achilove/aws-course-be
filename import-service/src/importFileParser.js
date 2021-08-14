@@ -1,6 +1,5 @@
 const AWS = require("aws-sdk");
 const csv = require("csv-parser");
-const { successResponse, errorResponse } = require('./helper');
 const { FOLDER_UPLOAD, FOLDER_PARSED } = require('./configs');
 
 module.exports = async (event) => {
@@ -36,10 +35,11 @@ module.exports = async (event) => {
     s3ReadStream
       .pipe(csv())
       .on("data", (data) => console.log(data))
-      .on("end", await moveFileToParsed());
+      .on("end", moveFileToParsed);
 
-    return successResponse({ success: true });
+    return { success: true };
   } catch (err) {
-    return errorResponse(err, 500);
+    console.error(JSON.stringify(err));
+    return { success: false };
   }
 };
