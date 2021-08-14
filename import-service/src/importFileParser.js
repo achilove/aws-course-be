@@ -38,8 +38,6 @@ module.exports = async (event) => {
       .on("data", (data) => console.log(data))
       .on("end", await moveFileToParsed());
 
-      moveFileToParsed()
-
     return successResponse({ success: true });
   } catch (err) {
     return errorResponse(err, 500);
