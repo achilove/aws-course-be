@@ -42,10 +42,18 @@ module.exports = async (event) => {
 
             await client.query('BEGIN')
 
-            const productInsertionResponse = await client.query(`insert into products(title, price, description) VALUES($1, $2, $3) RETURNING *`, [title, price, description]);
+            const productInsertionResponse = await client.query(
+                `INSERT INTO products(title, price, description) 
+                    VALUES($1, $2, $3) RETURNING *`, 
+            [title, price, description]);
+
             const product = productInsertionResponse.rows[0];
 
-            const stockInsertionResponse = await client.query(`insert into stocks(product_id, count) VALUES($1, $2) RETURNING *`, [product.id, count]);
+            const stockInsertionResponse = await client.query(
+                `INSERT INTO stocks(product_id, count) 
+                VALUES($1, $2) RETURNING *`, 
+            [product.id, count]);
+            
             await client.query('COMMIT')
             product.count = stockInsertionResponse.rows[0].count;
 
