@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const { successResponse, errorResponse } = require('./helper');
+const { successResponse, errorResponse, HttpStatusCodes } = require('./helper');
 const { BUCKET, FOLDER_UPLOAD } = require('./configs');
 
 
@@ -16,6 +16,6 @@ module.exports = async ( event ) => {
     const s3PutObjectUrl = await s3.getSignedUrlPromise("putObject", params);
     return successResponse(s3PutObjectUrl);
   } catch (err) {
-    return errorResponse(err, 500)
+    return errorResponse(err, HttpStatusCodes.INTERNAL_SERVER_ERROR)
   }
 };
