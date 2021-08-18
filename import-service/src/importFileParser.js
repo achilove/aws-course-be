@@ -13,7 +13,7 @@ module.exports = async (event) => {
     await s3
       .copyObject({
         Bucket: bucketName,
-        CopySource: bucketName + "/" + event.Records[0].s3.object.key,
+        CopySource: `${bucketName}/${event.Records[0].s3.object.key}`,
         Key: event.Records[0].s3.object.key.replace(FOLDER_UPLOAD, FOLDER_PARSED),
       })
       .promise();
