@@ -2,6 +2,7 @@ const { Client } = require('pg');
 
 const { successResponse, notFoundResponse, unexpectedErrorResponse, validationErrorResponse } = require('helper');
 const { dbOptions } = require('./db/config');
+const PG_ERROR_DUPLICATE_ENTRIES = '22P02'; 
 
 module.exports = async ( event ) => {
     const client = new Client(dbOptions);
@@ -18,7 +19,7 @@ module.exports = async ( event ) => {
     }catch(e){
         console.log('DB error: ', e)
 
-        if((e.code && e.code === '22P02') ){
+        if((e.code && e.code === PG_ERROR_DUPLICATE_ENTRIES) ){
             return validationErrorResponse('id should be uuid format');
         }
 

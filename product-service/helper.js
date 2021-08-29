@@ -3,6 +3,14 @@ const headers = {
     'Access-Control-Allow-Credentials': true,
 };
 
+const HttpStatusCodes = {
+    SUCCESS: 200,
+    INTERNAL_SERVER_ERROR: 500,
+    NOT_FOUND: 404,
+    BAD_REQUEST: 400,
+    UNPROCESSABLE_ENTITY: 422
+}
+
 const response = (body, statusCode) => {
     body = JSON.stringify(body);
     return {
@@ -13,31 +21,31 @@ const response = (body, statusCode) => {
 }
 
 module.exports.successResponse = body => {
-    return response(body, 200);
+    return response(body, HttpStatusCodes.SUCCESS);
 }
 
 module.exports.notFoundResponse = item => {
     const message = item + ' not found';
     return response({
         message
-    }, 404);
+    }, HttpStatusCodes.NOT_FOUND);
 }
 
 module.exports.unexpectedErrorResponse = () => {
     const message = 'Unexpected error has occurred';
     return response({
         message
-    }, 500);
+    }, HttpStatusCodes.INTERNAL_SERVER_ERROR);
 }
 
 module.exports.validationErrorResponse = (message) => {
     return response({
         message
-    }, 400);
+    }, HttpStatusCodes.BAD_REQUEST);
 }
 
 module.exports.ProductExistsErrorResponse = (message) => {
     return response({
         message
-    }, 422);
+    }, HttpStatusCodes.UNPROCESSABLE_ENTITY);
 }
