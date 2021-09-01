@@ -1,7 +1,7 @@
 
 
 const AWS = require("aws-sdk");
-const createProductWithStocks = require("./service/createProductWithStocks");
+const createProductWithStock = require("./service/createProductWithStock");
 
 const sns = new AWS.SNS();
 
@@ -12,7 +12,7 @@ module.exports = async (event) => {
             const product = JSON.parse(record.body);
             console.info('Product', JSON.stringify(product));
 
-            await createProductWithStocks(product);
+            await createProductWithStock(product);
             const params = {
                 Message: JSON.stringify(product),
                 MessageAttributes: { price: { DataType: 'Number', StringValue: String(product.price) } },
