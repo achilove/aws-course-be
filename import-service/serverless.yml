@@ -1,19 +1,19 @@
 service: import-service
 frameworkVersion: '2'
-variablesResolutionMode: 20210326
-configValidationMode: error
+useDotenv: true
 
 
 provider:
   name: aws
   runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
-    environment:
+  environment:
     PG_HOST: ${env:PG_HOST}
     PG_PORT: ${env:PG_PORT}
     PG_DATABASE: ${env:PG_DATABASE}
-    PG_USERNAME: ${env:PG_USERNAME}
+    PG_USERNAME: ${env:PG_USERNAME}`
     PG_PASSWORD: ${env:PG_PASSWORD}
 
   iam:
